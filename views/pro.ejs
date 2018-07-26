@@ -1,0 +1,91 @@
+<% include partials/header %>
+<title>Panel</title>
+<link href="/src/profile.css" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="/src/pro.css" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- ------------------------------- CHECKING FOR REZERWATIONS ------------------------------------ -->
+<% if(currentUser.isAdmin){ %>
+
+
+<script type='text/javascript'>
+  var rezes =<%- JSON.stringify(rez)%>
+</script>
+
+
+<h1> Rezerwacje użytkownika: <%= rez[0].pacjent.id.username %>  </h1>
+ <div class="container">
+<div id="main">
+
+
+</div>
+</div>
+
+<script>
+
+    for(var i=0; rezes.length > i ; i++){
+     console.log(rezes[i].pacjent.id)
+    var pocz = (540 +   rezes[i].start ) 
+      var kon = (540 +   rezes[i].end) 
+       var hP = Math.floor(pocz / 60);          
+      var mP = pocz % 60; 
+       var hK =  Math.floor(kon / 60);
+       var mK = kon % 60;
+       var datPocz = hP + ':'+ mP; 
+       var datEnd = hK + ':' + mK;
+
+    
+     // main div
+     var div = document.createElement("div");
+     document.getElementById("main").appendChild(div);
+     div.classList.add("divcreated");
+     div.id = [i]
+     
+     // first of a div
+     var divFirst = document.createElement("div");
+     document.getElementById([i]).appendChild(divFirst);
+     divFirst.innerHTML = "<p class='text'>" + "Data rezerwacji: " + "<strong>" + rezes[i].date + "</strong>" +  " Godzina: " +  "<strong>" +  datPocz + '-' + datEnd + "</strong>" +  "</p>"
+     divFirst.classList.add("divcreated");
+     
+     // second of a div
+     var divSecond = document.createElement("div");
+     document.getElementById([i]).appendChild(divSecond);
+     divSecond.innerHTML = "<a><span class='i glyphicon glyphicon-remove'></span></a>" 
+     divSecond.classList.add("divcreated2")
+     
+     // hiding element
+     document.getElementById([i]).childNodes[1].addEventListener("click", function(e){
+     this.parentElement.classList.add("hideDiv")
+   
+
+
+      $.ajax({
+      url: "/pro",
+      method: "POST",
+      data: { 
+        zapisStart : rezes[this.parentElement.id].start,
+        zapisEnd: rezes[this.parentElement.id].end,
+        Username: rezes[this.parentElement.id].pacjent.username,
+        email: rezes[this.parentElement.id].pacjent.id.email
+      }
+    });
+    
+    
+    
+     })
+     
+}
+</script>
+
+
+
+
+
+
+
+<% } %>
+
+<!--<p><a class="btn btn-default" href="/profile"><i class="qwe	glyphicon glyphicon-chevron-left"></i></a> </p>-->
+<% include partials/footer %>

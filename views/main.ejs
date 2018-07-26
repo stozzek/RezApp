@@ -1,0 +1,196 @@
+<% include partials/header %>
+<link href="/src/main.css" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<!--<h1> MAIN </h1>-->
+<!--<% if(currentUser && currentUser.isAdmin){ %>-->
+<!--<a href="/adminonly">SPECIAL DIRECTION</a>-->
+<!--<% }; %>-->
+<!--<a href="/reserve">Reserve?</a>-->
+<!--<br>-->
+<!--<a href="/login">Login form</a>-->
+
+<!--<a href="/register">Rejestracja</a>-->
+
+<!--<p><a href="/logout">logout</a></p>-->
+
+
+<!-- Navbar (sit on top) -->
+<!--<div class="w3-top">-->
+<!--  <div class="w3-bar" id="myNavbar">-->
+<!--    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">-->
+<!--      <i class="fa fa-bars"></i>-->
+<!--    </a>-->
+<!--    <a href="#home" class="w3-bar-item w3-button">HOME</a>-->
+<!--    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>-->
+<!--    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> PORTFOLIO</a>-->
+<!--    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>-->
+<!--    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">-->
+<!--      <i class="fa fa-search"></i>-->
+<!--    </a>-->
+<!--  </div>-->
+
+  <!-- Navbar on small screens -->
+<!--  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">-->
+<!--    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>-->
+<!--    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">PORTFOLIO</a>-->
+<!--    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>-->
+<!--    <a href="#" class="w3-bar-item w3-button">SEARCH</a>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+  <div class="w3-display-middle" style="white-space:nowrap;">
+    <a class="btn w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity" href="/reserve">TRY IT YOURSELF</a>
+    <!--<a href="/register"><span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">TRY <span class="w3-hide-small">IT</span> YOURSELF</span></a>-->
+  </div>
+</div>
+
+<!-- Container (About Section) -->
+<div class="w3-content w3-container w3-padding-64" id="about">
+  <h3 class="w3-center">O Aplikacji</h3>
+  <p class="w3-center"><em>alergy forward</em></p>
+  <p>Aplikacja, która umożliwi Ci umówić się na wizytę w mniej niż 5 min. Niewiedza jest najgorszą chorobą. Dowiedz się na co jesteś uczulony, kiedy rozpoczyna się sezon pylenia i jak poradzić sobie z uciążliwym katarem alergicznym. Wa idsifohoidf odsifoidspqwe oqwpeoqwiep ouigiug uiewg iusdfs dfkjbjkbkjcv kjkbjbsd fuh wieuhriuh wieuhi</p>
+  <div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+      <img src="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Me" width="500" height="333">
+    </div>
+
+    <!-- Hide this text on small devices -->
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+      <p>System Rezerwacji jest banalnie prosty. lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div>
+  <p class="w3-large w3-center w3-padding-16">Rodzaje Rezerwacji:</p>
+  <p class="w3-wide"><i class="	fa fa-medkit"></i>Odczulanie</p>
+  <div class="w3-light-grey">
+    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:25%">15min</div>
+  </div>
+  <p class="w3-wide"><i class="fa fa-stethoscope"></i>Badanie Alergologiczne</p>
+  <div class="w3-light-grey">
+    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:50%">30min</div>
+  </div>
+  <p class="w3-wide"><i class="fa fa-hospital-o"></i>Wizyta Standardowa</p>
+  <div class="w3-light-grey">
+    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:75%">45min</div>
+  </div>
+    <p class="w3-wide"><i class="fa fa-user-md"></i>Wizyta Zapoznawcza</p>
+  <div class="w3-light-grey">
+    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:100%">60min</div>
+  </div>
+</div>
+
+<div class="w3-row w3-center w3-dark-grey w3-padding-16">
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">57+</span><br>
+    Użytkowników
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">125+</span><br>
+    Rezerwacji
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">50+</span><br>
+    Zadowolonych Pacjentów
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">150+</span><br>
+    Spotkań
+  </div>
+</div>
+
+<!-- Third Parallax Image with Portfolio Text -->
+<!--<div class="bgimg-3 w3-display-container w3-opacity-min">-->
+<!--  <div class="w3-display-middle">-->
+<!--     <span class="w3-xxlarge w3-text-white w3-wide">CONTACT</span>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!-- Container (Contact Section) -->
+<!--<div class="w3-content w3-container w3-padding-64" id="contact">-->
+
+ 
+  <!--<p class="w3-center"><em>I'd love your feedback!</em></p>-->
+
+
+      <!--<form action="/action_page.php" target="_blank">-->
+      <!--  <div class="w3-row-padding" style="margin:0 -16px 8px -16px">-->
+      <!--    <div class="w3-half">-->
+      <!--      <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">-->
+      <!--    </div>-->
+      <!--    <div class="w3-half">-->
+      <!--      <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">-->
+      <!--    </div>-->
+      <!--  </div>-->
+      <!--  <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">-->
+      <!--  <button class="w3-button w3-black w3-right w3-section" type="submit">-->
+      <!--    <i class="fa fa-paper-plane"></i> SEND MESSAGE-->
+      <!--  </button>-->
+      <!--</form>-->
+
+
+    </div>
+    
+  </div>
+</div>
+
+ 
+<!-- Add Google Maps -->
+<script>
+function myMap()
+{
+  myCenter=new google.maps.LatLng(41.878114, -87.629798);
+  var mapOptions= {
+    center:myCenter,
+    zoom:12, scrollwheel: false, draggable: false,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+    }
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+
+
+
+
+<% include partials/footer %>

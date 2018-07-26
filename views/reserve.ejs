@@ -1,0 +1,209 @@
+<% include partials/header %>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.js"></script>
+
+<script type='text/javascript'>
+  var rows =<%- JSON.stringify(rez)%>
+</script>
+
+<script type='text/javascript'>
+  var CUA = <%- currentUser.isAdmin %>
+  var CUIA = <%-  JSON.stringify(currentUser) %>
+</script>
+
+<script src="/src/script.js" type="text/javascript"></script>
+
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link href="/src/style.css" rel="stylesheet">
+ <link href="/src/Kalendarz.css" rel="stylesheet">
+
+
+<!-- Modal 2 -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <div id="alll"> </div> 
+          <p id="ph" class="hidden"> </p>
+          <p id="pk" class="hidden"> </p>
+          <p id="pa" class="hidden"> </p>
+          <p id="dateshow" class="hidden"> </p>
+          <% if(currentUser.isAdmin){ %>
+          <p id="usershow"></p>
+          <% } %>
+          <!--<h4 class="modal-title" data-calendar-label="picked">Modal Header</h4>-->
+        </div>
+        <div class="modal-body">
+      
+     <!--MOOOOOOOOOOOOODAAAAAAALLLLLL BOOOOOOOOOOOOOODDDDDDDDDYYYYY/////////////////////////////////////////// -->
+      
+      <div clas="bbd">
+      <div class ="container">
+      	
+  <div class="timings">
+    <div> <span> 9:00 </span> AM </div>
+    <div> 9:30 </div>
+    <div> <span> 10:00 </span>AM </div>
+    <div> 10:30 </div>
+    <div> <span> 11:00 </span>AM </div>
+    <div> 11:30 </div>
+    <div> <span> 12:00 </span>PM </div>
+    <div> 12:30 </div>
+    <div> <span> 1:00 </span>PM </div>
+    <div> 1:30 </div>
+    <div> <span> 2:00 </span>PM </div>
+    <div> 2:30 </div>
+    <div> <span> 3:00 </span>PM </div>
+    <div> 3:30 </div>
+    <div> <span> 4:00 </span>PM </div>
+    <div> 4:30 </div>
+    <div> <span> 5:00 </span>PM </div>
+    <div> 5:30 </div>
+    <div> <span> 6:00 </span>PM </div>
+    <div> 6:30 </div>
+    <div> <span> 7:00 </span>PM </div>
+    <div> 7:30 </div>
+    <div> <span> 8:00 </span>PM </div>
+    <div> 8:30 </div>
+    <div> <span> 9:00 </span>PM </div>
+  </div>
+
+  <div class="days" id="events">    
+  </div>
+</div>
+</div>
+      
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+        
+        
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! MODAL 1 WYBOR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11-->
+        <!-- Modal 1 -->
+  <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <h4 class="modal-title" id="myModalLabel">Wybierz rodzaj wizyty</h4>
+      </div>
+      
+<!-- Wybór rodzaju wizyty -->
+      <div class="modal-body">
+        <form id="myForm">
+          <input type="radio" name="radioName" value="1" id="id1" /> <label for="id1"><b> Odczulanie</b></label> <br />
+          <input type="radio" name="radioName" value="2" id="id2" checked="checled"/> <label for="id2"> <b>Badania alergologiczne</b></label> <br />
+          <input type="radio" name="radioName" value="3" id="id3" /> <label for="id3"> <b>Wizyta normalna</b></label> <br />
+          <input type="radio" name="radioName" value="4" id="id4" /> <label for="id4"> <b>Pierwsza wizyta</b></label> <br />
+        </form>
+
+ </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="buttonFn()" id="choosen">Potwierdzam</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
+  
+     
+     
+        
+        
+        
+	<div class="containerVCAL">
+		<div id="v-cal">
+			<div class="vcal-header">
+				<button class="vcal-btn" data-calendar-toggle="previous">
+					<svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+						<path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+					</svg>
+				</button>
+
+				<div class="vcal-header__label" data-calendar-label="month">
+					
+				</div>
+
+
+				<button class="vcal-btn" data-calendar-toggle="next">
+					<svg height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+						<path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+					</svg>
+				</button>
+			</div>
+			<div class="vcal-week">
+				<span>Mon</span>
+				<span>Tue</span>
+				<span>Wed</span>
+				<span>Thu</span>
+				<span>Fri</span>
+				<span>Sat</span>
+				<span>Sun</span>
+			</div>
+			<div class="vcal-body" data-calendar-area="month"></div>
+		</div>
+
+		<p style="display:none" class="demo-picked">
+			Date picked:
+			<span data-calendar-label="picked"></span>
+		</p>
+
+	</div>
+
+<div class="d-inline" id="PD" style="visibility: hidden"></div>
+          <div class="d-inline" data-calendar-label="ThisDay" style="visibility: hidden"></div>
+          <div class="d-inline" style="visibility: hidden" data-calendar-label="ThisMonth"></div>
+
+
+
+
+<script>
+		window.addEventListener('load', function () {
+			  Calendar.init({
+				disablePastDays: true
+			});
+		})
+</script>
+
+
+<script>
+    $("#choosen").on( "click", function() {
+        $('#myModal1').modal('hide');  
+    });
+//trigger next modal
+    $("#choosen").on( "click", function() {
+        $('#myModal').modal('show');  
+    });
+</script>
+
+<!-- Przeładowuje strone po zamknieciu modalu, aby odświeżyc  baze danych-->
+<script>
+  $('#myModal').on('hidden.bs.modal', function () {
+ location.reload();
+})
+</script>
+
+<script src="/src/Kalendarz.js" type="text/javascript"></script>
+<script src="/src/Bloki.js" type="text/javascript"></script>
+
+
+
+<% include partials/footer %>
+
+

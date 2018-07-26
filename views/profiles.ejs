@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<title>Profile</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rale way">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+<script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="jquery-2.1.0.min.js"></script>
+<link href="/src/profile.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<body class="w3-light-grey">
+
+<nav class="navbar w3-top navbar-default">
+      <div class="container-fluid">
+            <div class="navbar-header">
+          <button class="w3-bar-item w3-button w3-hide-large  w3-hover-text-black" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+                  <a class="navbar-brand" href="/">Projekt</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                      <% if(!currentUser){ %>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Sign up</a></li>
+                        <!-- Admin -->
+                        <% } else if(currentUser.isAdmin){%>
+                        <li> <a>Signed in as: <%= currentUser.username %> </a></li>
+                        <li><a href="/reserve">Zarządzaj Reserve</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                        <!-- Użytkownik--> 
+                      <% } else {  %>
+                        <li> <a>Signed in as: <%= currentUser.username %> </a></li>
+                        <li> <a href="/reserve">Reserve</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                      <% } %>
+                  </ul>
+            </div>
+      </div>
+</nav>
+<!-- Top container -->
+
+
+
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s8 w3-bar">
+    
+      <span>Welcome, <strong> currentUser.username  </strong></span><br>
+     
+      <!--<a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>-->
+      <!--<a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>-->
+      <!--<a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>-->
+    </div>
+  </div>
+  <hr>
+  <div class="w3-container">
+    <h5>Dashboard</h5>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href="#" class="w3-bar-item tablink w3-button w3-padding w3-blue" onclick="openLink(event, 'check')"><i class="fa fa-eye fa-fw"></i>  Check</a>
+    <a href="#" class="w3-bar-item tablink w3-button w3-padding " onclick="openLink(event, 'DaneOsobowe')"><i class="fa fa-users fa-fw"></i>  DaneOsobowe</a>
+    <a href="#" class="w3-bar-item tablink w3-button w3-padding" onclick="openLink(event, 'Traffic')"><i class="fa fa-users fa-fw"></i> Traffic</a>
+
+  </div>
+</nav>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+
+<!-- ------------------------------- CHECKING FOR PATIENTS ------------------------------------ -->
+<% if(currentUser.isAdmin){ %>
+ <!--!PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+
+
+<h1>
+      SEARCH FOR PATIENTS
+ </h1>
+ 
+   <p>
+   <form action="/profile" method="GET" class="form-inline">
+       <div class="form-group">
+           <input type="text" name="search" placeholder="Szukaj..." class="form-control">  
+           <input type="submit" value="search" class="btn btn=default">
+       </div>
+   </form>
+
+
+ <% users.forEach(function(user){  %>
+ <div class="jumbotron">
+           
+          
+              <p> <strong>Użytkownik: </strong><%= user.username %> </p>
+              <p> <strong>Imię: </strong><%= user.imie %> </p>
+              <p> <strong>Nazwisko: </strong><%= user.nazwisko%> </p>
+              <p> <strong>Choroby: </strong><%= user.choroby %></p>
+              <p> <strong>Alergie: </strong><%= user.alergie %></p>
+              <button>Zmiana danych pacjenta</button>
+              
+              <form action="/profile?_method=PUT" method="POST">
+                <div class="form-group">
+                  
+                   <p> <strong>Alergie: </strong>  <input  name="alergie" type="text" value="<%=user.alergie%>"> </p>
+                    <input style="display:none" name="id" type="text" value="<%=user.id%>">
+                    <input type="submit" value="Save" class="btn btn=default">
+                    
+                </div>
+              </form>
+            </div>
+      </div>
+  
+ <% }); %>
+
+<% } %>
+
+
+<!-- ------------------------------- CHECKING THE RESERVATIONS ------------------------------------ -->
+<div id="check" class="w3-main tabs w3-animate-left" style="margin-left:300px;margin-top:43px;display:none">
+  <h1>REZERWACJE WIZYT</h1>
+
+<% if(currentUser.isAdmin){ %>
+  
+</div>
+   
+
+  
+  
+  
+<div id="DaneOsobowe" class="w3-main tabs w3-animate-left" style="margin-left:300px;margin-top:43px;display:none">
+  <h1>Dane os ?</h1>
+</div>
+
+
+
+<div id="Traffic" class="w3-main tabs w3-animate-left" style="margin-left:300px;margin-top:43px;display:none">
+  <h1> TO JEST Opcje </h1>
+</div>
+
+
+
+
+
+
+  <!-- End page content -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+function openLink(evt, animName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("tabs");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" w3-blue", "");
+  }
+  document.getElementById(animName).style.display = "block";
+  evt.currentTarget.className += " w3-blue";
+}
+</script>
+
+
+
+
+
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+    if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+        overlayBg.style.display = "none";
+    } else {
+        mySidebar.style.display = 'block';
+        overlayBg.style.display = "block";
+    }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+    overlayBg.style.display = "none";
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

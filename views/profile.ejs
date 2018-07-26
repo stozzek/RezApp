@@ -1,0 +1,357 @@
+<% include partials/header %>
+<title>Panel</title>
+<link href="/src/profile.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- ------------------------------- CHECKING FOR PATIENTS ------------------------------------ -->
+
+<!--// <script>-->
+<!--// var d = new Date();-->
+<!--// var n = d.getMonth();-->
+<!--//     var month=new Array(7);-->
+<!--//       month[0]="January";-->
+<!--//       month[1]="February";-->
+<!--//       month[2]="March";-->
+<!--//       month[3]="April";-->
+<!--//       month[4]="May";-->
+<!--//       month[5]="June";-->
+<!--//       month[6]="July";-->
+<!--//       month[7]="August";-->
+<!--//       month[8]="September";-->
+<!--//       month[9]="October";-->
+<!--//       month[10]="November";-->
+<!--//       month[11]="December";-->
+      
+<!--//      var Thismonth = month[n];-->
+<!--//         console.log((leszczyna.indexOf(Thismonth) > -1))-->
+<!--//      let leszczyna = [-->
+<!--//          "January",-->
+<!--//          "February",-->
+<!--//          "March"-->
+<!--//      ];-->
+<!--//      let Olcha -->
+      
+     
+     
+<!--</script>-->
+
+<!--USER-->
+<% if(!currentUser.isAdmin){ %>
+<div id="main">
+  <div class="jumbotron">
+<div class="container">
+<div id="main">
+     <h1>Sprawdź swoje rezerwacje</h1>
+<a href="/proz"><button style="margin:25px" class="term">Terminy</button></a>
+</div>
+</div>
+</div>
+</div>
+<% } %>
+ 
+ 
+<!-- ADMIN-->
+<% if(currentUser.isAdmin){ %>
+ <!--!PAGE CONTENT! -->
+
+<div  style="padding:50px" id="main">
+<h1>
+      Wyszukaj pacjenta
+ </h1>
+ 
+   <p>
+       <div class="form-one">
+   <form  action="/profile" method="GET" class="form-inline">
+       <div class="form-group">
+           <input type="text" name="search" placeholder="Szukaj..." class="form-control">  
+           <input type="submit" value="search" class="btn btn-default">
+       </div>
+   </form>
+    </div>
+      </div>
+      
+      
+      
+      
+      
+      <div style="padding:50px" id="main">
+<h1>
+      Sprawdź terminy rezerwacji w wybranym dniu
+ </h1>
+ <form  action="/prof" method="GET">
+ <div>
+        <select name="date" id="date">
+    <option value="hide">-- Date --</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13" >13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+    <option value="19">19</option>
+    <option value="20">20</option>
+    <option value="21">21</option>
+    <option value="22">22</option>
+    <option value="23">23</option>
+    <option value="24">24</option>
+    <option value="25">25</option>
+    <option value="26">26</option>
+    <option value="27">27</option>
+    <option value="28">28</option>
+    <option value="29">29</option>
+    <option value="30">30</option>
+    <option value="31">31</option>
+</select>
+     
+        <select name="day" id="day">
+    <option value="hide">-- Day --</option>
+    <option value="Monday">Monday</option>
+    <option value="Tuesday" rel="icon-temperature">Tuesday</option>
+    <option value="Wednesday">Wednesday</option>
+    <option value="Thursday">Thursday</option>
+    <option value="Friday">Friday</option>
+    <option value="Saturday">Saturday</option>
+    <option value="Sunday">Sunday</option>
+</select>
+
+   <select name="month" id="month">
+    <option value="Hide">-- Month --</option>
+    <option value="January" >January</option>
+    <option value="February">February</option>
+    <option value="March">March</option>
+    <option value="April">April</option>
+    <option value="May">May</option>
+    <option value="June">June</option>
+    <option value="July">July</option>
+    <option value="August">August</option>
+    <option value="September">September</option>
+    <option value="October">October</option>
+    <option value="November">November</option>
+    <option value="December">December</option>
+</select>
+
+
+
+
+
+
+</div>
+<!--onclick="myFunction()"-->
+<button class="btn btn-default" type="submit" >Search</button>
+</form >
+      </div>
+      
+ 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+<% if(userrez){ %>
+<% if(userrez.pacjent.id){ %>
+
+
+
+
+ <div class="jumbotron">
+     
+     
+<div class="s">
+
+<table class="w3-table-all w3-large" id="customers">
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <th>Użytkownik</th>
+    <td><%= userrez.pacjent.username %></td>
+  </tr>
+  <tr>
+    <th>Imie</th>
+    <td><%= userrez.pacjent.id.imie %></td>
+  </tr>
+  <tr>
+    <th>Nazwisko</th>
+    <td><%= userrez.pacjent.id.nazwisko %></td>
+  </tr>
+  <tr>
+    <th>telefon</td>
+    <td><%= userrez.pacjent.id.telefon %></td>
+  </tr> 
+  <tr>
+    <th>Email</td>
+    <td><%= userrez.pacjent.id.email %></td>
+  </tr> 
+ <tr>
+    <th>Alergie</td>
+    <td><%= userrez.pacjent.id.alergie %></td>
+  </tr> 
+  
+</table>
+
+</div>
+</table>
+ 
+
+</form>
+</div>
+
+
+    </div>
+
+
+  <div class="jumbotron">
+      <div class="container">
+      <div class="form-two"> 
+      <h1>Sprawdź rezerwację pacjenta</h1>
+<form action="/pro" method="GET" class="form-inline">
+     <div class="form-group">
+         <input  style="display:none" name="id" type="text" value="<%=userrez.pacjent.id._id %>"> 
+          <input type="submit" value="TERMINY" class=" term">
+  
+</div>
+</form>
+
+
+
+</div>
+      </div>
+      </div>
+      
+<div class="jumbotron">
+       <h1>Aktualizuj alergie</h1>
+              <form action="/profile?_method=PUT" method="POST">
+                <div class="form-group">
+                  
+                   <p style="display:inline-block"> <strong>Alergie: </strong>  <input  name="alergie" type="text" value="<%=userrez.pacjent.id.alergie%>"> </p>
+                    <input  style="display:none" name="id" type="text" value="<%=userrez.pacjent.id._id%>"> 
+                      <input  style="width: 100px;height: 45px;" type="submit" value="Save" class="btn btn=default">
+                   
+                </div>
+              </form>
+</div>
+ <% } %>
+ 
+
+
+
+<% } %>
+
+
+<% } %>
+
+
+ <script>
+
+// function myFunction() {
+//   var zmienna1 = document.getElementById("date");
+//     var value1 = zmienna1.options[zmienna1.selectedIndex].value;
+//     var text = zmienna1.options[zmienna1.selectedIndex].text;
+    
+//       var zmienna2 = document.getElementById("day");
+//     var value2 = zmienna2.options[zmienna2.selectedIndex].value;
+//     var text1 = zmienna2.options[zmienna2.selectedIndex].text;
+
+    
+    
+    
+//     var zmienna3 = document.getElementById("month");
+//     var value3 = zmienna3.options[zmienna3.selectedIndex].value;
+//     var text2 = zmienna3.options[zmienna3.selectedIndex].text;
+    
+//     let dataa = value1 + ' ' + value2 + ' ' + value3
+//     console.log(typeof dataa)
+     
+     
+//       $.ajax({
+//       url: "/prof",
+//       method: "GET",
+//       data: { 
+//         Datea: dataa
+//       }
+//     });
+    
+    
+
+    
+// }
+
+  </script>
+
+
+
+
+  
+<script>
+    
+$('select').each(function(){
+    var $this = $(this), numberOfOptions = $(this).children('option').length;
+  
+    $this.addClass('select-hidden'); 
+    $this.wrap('<div class="select"></div>');
+    $this.after('<div class="select-styled"></div>');
+
+    var $styledSelect = $this.next('div.select-styled');
+    $styledSelect.text($this.children('option').eq(0).text());
+  
+    var $list = $('<ul />', {
+        'class': 'select-options'
+    }).insertAfter($styledSelect);
+  
+    for (var i = 0; i < numberOfOptions; i++) {
+        $('<li />', {
+            text: $this.children('option').eq(i).text(),
+            rel: $this.children('option').eq(i).val()
+        }).appendTo($list);
+    }
+  
+    var $listItems = $list.children('li');
+  
+    $styledSelect.click(function(e) {
+        e.stopPropagation();
+        $('div.select-styled.active').not(this).each(function(){
+            $(this).removeClass('active').next('ul.select-options').hide();
+        });
+        $(this).toggleClass('active').next('ul.select-options').toggle();
+    });
+  
+    $listItems.click(function(e) {
+        e.stopPropagation();
+        $styledSelect.text($(this).text()).removeClass('active');
+        $this.val($(this).attr('rel'));
+        $list.hide();
+        //console.log($this.val());
+    });
+  
+    $(document).click(function() {
+        $styledSelect.removeClass('active');
+        $list.hide();
+    });
+
+});
+</script>   
+<% include partials/footer %>

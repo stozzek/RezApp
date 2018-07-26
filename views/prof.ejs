@@ -1,0 +1,131 @@
+<% include partials/header %>
+<title>Panel</title>
+<link href="/src/proz.css" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 
+ <script type='text/javascript'>
+  var datee =<%- JSON.stringify(date)%>
+  console.log(datee)
+  console.log(datee == 'null')
+</script>
+ 
+ 
+  
+ <script type='text/javascript'>
+  var data =<%- JSON.stringify(data)%>
+  console.log(data)
+</script>
+
+<% if(date !== 'null'){ %>
+<h1> Rezerwacje w dniu: <p><%= data %> </h1> </p>
+
+ <div class="container">
+<div id="main">
+
+ </div>
+ </div>
+ 
+<% } else {  %> 
+ 
+ <h1> Rezerwacje w dniu: <p> <%= date[0].date %> </h1> </p>
+ <div class="container">
+<div id="main">
+
+ </div>
+  
+ </div>
+ 
+ 
+ 
+ 
+ 
+ <% } %>
+
+<script>
+    for(var i=0; datee.length > i ; i++){
+     console.log(datee[i])
+    var pocz = (540 +   datee[i].start ) 
+      var kon = (540 +   datee[i].end) 
+       var hP = Math.floor(pocz / 60);          
+      var mP = pocz % 60; 
+       var hK =  Math.floor(kon / 60);
+       var mK = kon % 60;
+       var datPocz = hP + ':'+ mP; 
+       var datEnd = hK + ':' + mK;
+     console.log(datPocz, datEnd)
+    
+     // main div
+     var div = document.createElement("div");
+     document.getElementById("main").appendChild(div);
+     div.classList.add("divcreated");
+     div.id = [i]
+     
+     
+          var divFirst = document.createElement("div");
+     document.getElementById([i]).appendChild(divFirst);
+     // first of a div
+     if(datee[i].pacjent !== undefined){
+     divFirst.innerHTML = "<p class='text'>" +" " + "<strong>" + datee[i].pacjent.id.imie +" " + datee[i].pacjent.id.nazwisko + "</strong>" + " | " +  "Data rezerwacji: " + "<strong>" + datee[i].date + "</strong>" +  " Godzina: " +  "<strong>" +  datPocz + '-' + datEnd + "</strong>" +  "</p>"
+     divFirst.classList.add("divcreated");
+     
+     // second of a div
+     var divSecond = document.createElement("div");
+     document.getElementById([i]).appendChild(divSecond);
+     divSecond.innerHTML = "<a><span class='i glyphicon glyphicon-remove'></span></a>" 
+     divSecond.classList.add("divcreated2")
+     
+     // hiding element
+     document.getElementById([i]).childNodes[1].addEventListener("click", function(e){
+     this.parentElement.classList.add("hideDiv")
+     console.log(this.parentElement.id)
+     
+     console.log(datee[this.parentElement.id].pacjent.username)
+    //   $.ajax({
+    //   url: "/proz",
+    //   method: "POST",
+    //   data: { 
+    //     zapisStart : rezes[this.parentElement.id].start,
+    //     zapisEnd: rezes[this.parentElement.id].end,
+    //     Username: rezes[this.parentElement.id].pacjent.username
+    //   }
+    // });
+    
+    
+    
+     })
+     } else {
+         console.log("12344322432432432")
+        divFirst.innerHTML = "<p class='text'>" + "<span class='bla'>" +  " Godzina: " + "</span>" +  datPocz + '-' + datEnd  +  " - Zablokowany Administracyjnie" + "</p>"
+        //divFirst.innerHTML ="<p>" +  Math.floor(Math.random() * 100) + 1   +"</p>"
+     }
+}
+</script>
+ 
+<!--<p><a class="btn btn-default" href="/profile"><i class="qwe	glyphicon glyphicon-chevron-left"></i></a> </p>-->
+
+<!--<button type="button" class="btn btn-primary" id="numBnt" >Potwierdzam</button>-->
+
+
+
+<!-- <script>-->
+  <!--// Sortowanie -->
+
+
+
+
+<!--$(window).bind("load", function () {-->
+<!-- var $divs = $("div .divcreated");-->
+<!--    var numericallyOrderedDivs = $divs.sort(function (a, b) {-->
+<!--        return $(a).find("p").text() > $(b).find("p").text();-->
+<!--    });-->
+<!--    $("#main").html(numericallyOrderedDivs);-->
+    
+<!--    console.log($divs)-->
+<!--});-->
+
+<!-- </script>-->
+
+ 
+ 
+ <% include partials/footer %>

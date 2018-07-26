@@ -1,0 +1,30 @@
+<% include partials/header %>
+<title>Panel</title>
+<link href="/src/profile.css" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- ------------------------------- CHECKING FOR PATIENTS ------------------------------------ -->
+
+<!-- ADMIN-->
+<% if(currentUser.isAdmin){ %>
+ <!--!PAGE CONTENT! -->
+
+<div id="main">
+<h1>
+      SEARCH FOR PATIENTS
+ </h1>
+ 
+   <p>
+       <div class="form-one">
+   <form  action="/profile" method="GET" class="form-inline">
+       <div class="form-group">
+           <input type="text" name="search" placeholder="Szukaj..." class="form-control">  
+           <input type="submit" value="search" class="btn btn=default">
+       </div>
+   </form>
+    </div>
+    
+
+
+
+<% } %>
+<% include partials/footer %>

@@ -1,0 +1,80 @@
+<% include ./partials/header %> 
+
+
+<!--<form action="/login" method="post">-->
+<!--    <input type="text" name="username" placeholder="username">-->
+<!--    <input type="password" name="password" placeholder="password">-->
+<!--    <input type="submit" value="login">-->
+<!--</form>-->
+<!--<br>-->
+<!--<p>No account? <a href="/register">Register</a></p>-->
+
+
+<link href="/src/login.css" rel="stylesheet">
+
+ 
+<div class="cont">
+  <div class="form sign-in">
+      <form action="/login" method="post">
+    <h2>Logowanie</h2>
+    <label>
+      <span>Username</span>
+      <input type="text" name="username"/>
+    </label>
+    <label>
+      <span>Password</span>
+      <input name="password" type="password" />
+    </label>
+      <button type="submit" class="submit">Sign In</button>
+    </form>
+    <p class="forgot-pass">Forgot password?</p>
+  
+  </div>
+  <div class="sub-cont">
+    <div class="img">
+      <div class="img__text m--up">
+        <h2>Nie masz konta?</h2>
+        <p>Stwórz je</p>
+      </div>
+      <div class="img__text m--in">
+        <h2>One of us?</h2>
+        <p>If you already has an account, just sign in. We've missed you!</p>
+      </div>
+      <div class="img__btn">
+        <span class="m--up">Sign Up</span>
+        <span class="m--in">Sign In</span>
+      </div>
+    </div>
+    <div class="form sign-up">
+      <h2>Wypełnij pola,</h2>
+      <form action="/register" method="POST">
+      <label>
+        <span>Username</span>
+        <input type="text" name="username" >
+      </label>
+      <label>
+        <span>Imie</span>
+        <input type="text" name="imie"">
+      </label>
+      <label>
+        <span>Nazwisko</span>
+      <input type="text" name="nazwisko"">
+      </label>
+      <label>
+        <span>Password</span>
+        <input type="password" name="password">
+      </label>
+      <button type="submit" class="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.querySelector('.img__btn').addEventListener('click', function() {
+  document.querySelector('.cont').classList.toggle('s--signup');
+});
+</script>
+<% include ./partials/footer %> 
+
+
